@@ -268,7 +268,9 @@ main {
     margin: 5px;
 }
 
-
+.modal {
+    opacity: 0;
+}
 
 
 
