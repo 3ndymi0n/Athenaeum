@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Library V2</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="page-name">
+                <h1>athenaeum</h1>
+            </div>
+            <div class="add-card">
+                <form id="add-title" onsubmit="addTitle()">
+                    <h3>Add a New Title</h3>
+                    <h4>Fill in the form below to add a new title to the library</h4>
+                    <fieldset>
+                        <input type="text" placeholder="Title" id="title" tabindex=1 required>
+                    </fieldset>
+                    <fieldset>
+                        <input type="text" placeholder="Author" id="author" tabindex=2 required>
+                    </fieldset>
+                    <fieldset>
+                        <input type="text" placeholder="Genre" id="genre" tabindex=3 required>
+                    </fieldset>
+                    <fieldset>
+                        <input type="number" placeholder="Pages" id="pages" tabindex=4 required>
+                    </fieldset>
+                    </fieldset>
+                    <fieldset>
+                        <input type="url" placeholder="Cover art url link (Optional)" tabindex=7>
+                    </fieldset>
+                    <fieldset>
+                        <textarea placeholder="Enter a summary of the title your are submitting today" tabindex=8></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <button name="submit" type="submit" id="submit-title" data-submit="...submitting">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </nav>
+        <main>
+            <section class="search">
+                <label for="search">
+                    <input type="text" name="search" id="search" placeholder="Search titles...">
+                </label>
+            </section>
+            <section class="content">
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div>
+
+                    <!-- Car Modal -->
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://pbs.twimg.com/media/E6uLZpsVUAI3tke.jpg">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            Dune
+                        </p>
+                        <span id="author-label">
+                            Frank Hubert
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://www.booktopia.com.au/covers/big/9780007458424/0000/the-hobbit.jpg">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Fantasy
+                        </span>
+                        <p id="title-label">
+                            The Hobbit
+                        </p>
+                        <span id="author-label">
+                            J.R.R Tolkien
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5750/9780575076341.jpg">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Endymion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+                <div class="content-card">
+                    <img class="cover-art" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9">
+                    <div class="content-details">
+                        <span id="genre-label">
+                            Science Fiction
+                        </span>
+                        <p id="title-label">
+                            The Hyperion Omnibus
+                        </p>
+                        <span id="author-label">
+                            Dan Simmons
+                        </span>
+                    </div> 
+                </div>
+            </section>
+        </main>
+    </div>
+    
+</body>
+</html>
