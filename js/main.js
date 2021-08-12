@@ -1,9 +1,21 @@
 const library = (function () {
     let bookCollection = [];
 
+    function dec2hex(dec) {
+        return dec.toString(16).padStart(2,"0");
+    }
+
+    function generateId() {
+        let arr = new Uint8Array(20)
+        window.crypto.getRandomValues(arr)
+        return Array.from(arr,dec2hex).join('');
+
+    }
+
     return {
         addBook: function(title, author, pages, readStatus) {
             let newBook = {
+                id: generateId(),
                 title: title,
                 details: new Book(title,author, pages, readStatus)
             }
@@ -39,6 +51,7 @@ function Book(title, author, pages, readStatus=false) {
     this.pages = pages;
     this.readStatus = readStatus;
     this.metadata = [];
+    this.synopsis = ""
 }
 
 Book.prototype.info = function() {
@@ -50,16 +63,6 @@ Book.prototype.tags = function(...tags) {
 }
 
 
-library.addBook('The Hobbits','J.R.R Tolkien', 295,false);
-library.addBook('Lord of the Rings','J.R.R.Tolkien', 342, true);
+library.addBook("gone with the wind","someone",200);
 
-//library.removeBook('Lord of the Rings');
-
-let hobbits = library.getBook('The Hobbits');
-let lotr = library.getBook('Lord of the Rings');
-
-//console.log(hobbits.info());
-hobbits.tags('Adventure', 'Fantasy', 'Magic');
-console.log(lotr);
-//console.log(lotr);
-//console.log(library.getAllBooks());
+library.getAllBooks();

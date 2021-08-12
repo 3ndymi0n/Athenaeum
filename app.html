@@ -30,6 +30,14 @@
                     <fieldset>
                         <input type="number" placeholder="Pages" id="pages" tabindex=4 required>
                     </fieldset>
+                    <fieldset>
+                        <input list="read-status" name="read-status-check" id="read-status-check" placeholder="Book completion status">
+                        <datalist id="read-status">
+                            <option value="0% complete">
+                            <option value="25% complete">
+                            <option value="50% complete">
+                            <option value="100% complete">
+                        </datalist>   
                     </fieldset>
                     <fieldset>
                         <input type="url" placeholder="Cover art url link (Optional)" tabindex=7>
@@ -38,7 +46,7 @@
                         <textarea placeholder="Enter a summary of the title your are submitting today" tabindex=8></textarea>
                     </fieldset>
                     <fieldset>
-                        <button name="submit" type="submit" id="submit-title" data-submit="...submitting">Submit</button>
+                        <button class="btn" name="submit" type="submit" id="submit-title" data-submit="...submitting">Submit</button>
                     </fieldset>
                 </form>
             </div>
@@ -46,7 +54,7 @@
         <main>
             <section class="search">
                 <label for="search">
-                    <input type="text" name="search" id="search" placeholder="Search titles...">
+                    <input type="search" name="search" id="search" placeholder="Search titles...">
                 </label>
             </section>
             <section class="content">
@@ -64,7 +72,28 @@
                         </span>
                     </div>
 
-                    <!-- Car Modal -->
+                    <!-- Card Modal -->
+                    <div class="modal-card">
+                        <div class="modal__content">
+                            <span class="close">&times;</span>
+                            <h1>The Hyperion Omnibus</h1>
+                            <hr />
+                            <h4>Author: Dan Simmons</h3>
+                            <h4>Page Count: 723</h4>
+                            <h4>I have read this book</h4>
+                            <div class="synopsis">
+                                <h4>Synopsis:</h4>
+                                <p>lt is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer.
+                                    On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself.</p>
+                                <br>
+                                <div class="modal__buttons">
+                                    <button class="btn btn-red">Delete Book</button>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Card Modal -->
                 </div>
                 <div class="content-card">
                     <img class="cover-art" src="https://pbs.twimg.com/media/E6uLZpsVUAI3tke.jpg">
@@ -349,6 +378,6 @@
             </section>
         </main>
     </div>
-    
+    <script src="js/main.js"></script>  
 </body>
 </html>
