@@ -1,68 +1,108 @@
+// Listen for new title submissions.
+document.querySelector("#add-title").addEventListener("submit", (e) => {
+  try {
+    const newTitleFormData = new FormData(e.target);
+    let newTitle = Object.fromEntries(newTitleFormData.entries());
+
+    library.addBook(
+      newTitle.title,
+      newTitle.author,
+      newTitle.pages,
+      newTitle.genre,
+      newTitle.readStatus,
+      newTitle.coverArt,
+      newTitle.synopsis
+    );
+  } catch (err) {
+    alert(err.message);
+  }
+});
+
+
 const library = (function () {
-    let bookCollection = [];
+  let bookCollection = {};
 
-    function dec2hex(dec) {
-        return dec.toString(16).padStart(2,"0");
-    }
+  // generateId helper function.
+  function dec2hex(dec) {
+    return dec.toString(16).padStart(2, "0");
+  }
 
-    function generateId() {
-        let arr = new Uint8Array(20)
-        window.crypto.getRandomValues(arr)
-        return Array.from(arr,dec2hex).join('');
+  function generateId() {
+    let arr = new Uint8Array(10);
+    window.crypto.getRandomValues(arr);
+    return Array.from(arr, dec2hex).join("");
+  }
 
-    }
+  return {
+    addBook: function (title, author, pages, genre, readStatus, coverArt, synopsis) {
+        let id =  generateId();
+        let details = new Book(
+          title,
+          author,
+          pages,
+          genre,
+          readStatus,
+          coverArt,
+          synopsis
+        );
+      bookCollection[id] = details;
+    },
 
-    return {
-        addBook: function(title, author, pages, readStatus) {
-            let newBook = {
-                id: generateId(),
-                title: title,
-                details: new Book(title,author, pages, readStatus)
-            }
-            bookCollection.push(newBook);
-        },
-        removeBook: function(title) {
-            console.log(`Removing ${title} from library...`)
-            bookCollection = bookCollection.filter((e) => {
-                return e.title != title;
-            });
-        },
-        getBook: function(title) {
-            for(let i = 0; i < bookCollection.length; i++) {
-                if (bookCollection[i].title == title) {
-                    return bookCollection[i].details;
-                }
-            };
-            return `${title} not found.`
-        },
-        getAllBooks: function () {
-            let bookTitles = [];
-            for (let i = 0; i < bookCollection.length; i++) {
-                bookTitles.push(bookCollection[i].title);
-            };
-            return bookTitles;
-        } 
-    };
+    removeBook: function (title) {
+      console.log(`Removing ${title} from library...`);
+      bookCollection = bookCollection.filter((e) => {
+        return e.title != title;
+      });
+    },
+
+    getBook: function (title) {
+      for (const item in bookCollection) {
+          console.log(`${item}: ${bookCollection[item]}`);
+      }
+      return `${title} not found.`;
+    },
+
+    getAllBooks: function () {
+      return bookCollection;
+    },
+  };
 })();
 
-function Book(title, author, pages, readStatus=false) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.metadata = [];
-    this.synopsis = ""
+function Book(
+  title,
+  author,
+  pages,
+  genre,
+  readStatus = "0%",
+  coverArt = "https://previews.123rf.com/images/oasis15/oasis151506/oasis15150600007/40908971-blank-book-cover.jpg",
+  synopsis = "No synopsis recorded as yet."
+) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.genre = genre;
+  this.readStatus = readStatus;
+  this.coverArt = coverArt;
+  this.synopsis = synopsis;
 }
 
-Book.prototype.info = function() {
-    return (`${this.title}, ${this.author}, ${this.pages}, ${this.readStatus}`);
-}
+Book.prototype.info = function () {
+  return `${this.title}, ${this.author}, ${this.pages}, ${this.readStatus}`;
+};
 
-Book.prototype.tags = function(...tags) {
-    tags.forEach(e => this.metadata.push(e));
-}
+library.addBook(
+  "The rise of Hyperion",
+  "Dan Simmons",
+  723,
+  "Science Fiction",
+  "25%",
+  "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTKbpGHJeFMd3UsEC5Cucn2U0E59U3nZmVBONonqEMYYIHm1Jt9",
+  "lt is the 29th century and the universe of the Human Hegemony is under threat. Invasion by the warlike Ousters looms, and the mysterious schemes of the secessionist AI TechnoCore bring chaos ever closer. On the eve of disaster, with the entire galaxy at war, seven pilgrims set fourth on a final voyage to the legendary Time Tombs on Hyperion, home to the Shrike, a lethal creature, part god and part killing machine, whose powers transcend the limits of time and space. The pilgrims have resolved to die before discovering anything less than the secrets of the universe itself."
+);
 
-
-library.addBook("gone with the wind","someone",200);
-
-library.getAllBooks();
+library.addBook(
+    "Hyperion",
+    "Dan Simmons",
+    876,
+    "Science Fiction"
+)

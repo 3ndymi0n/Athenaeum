@@ -326,6 +326,14 @@ main {
     transition: background-color 0.3s ease-in-out;
   }
 
+  .btn-green {
+    background-color: var(--green-600);
+  }
+
+  .btn-green:hover {
+    background-color: var(--green-800);
+  }
+
 .modal__content:hover {
     color: var(--grey-800);
 }
