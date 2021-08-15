@@ -238,7 +238,7 @@ main {
 
 .content-details {
     position: absolute;
-    background-color: var(--yellow-600);
+    background-color: var(--blue-primary);
     border-top: 4px solid var(--green-800);
     padding: 5px;
     width: 100%;
@@ -264,7 +264,7 @@ main {
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 1.2;
-    color: var(--green-800);
+    color: var(--yellow-600);
     padding: 0;
     margin: 5px;
 }

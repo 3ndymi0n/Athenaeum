@@ -81,6 +81,7 @@ const library = (function () {
             delete bookCollection[items[i]];
         }
         updateLocalStorage();
+        location.reload();
     },
 
     getAllBooks: function() {
