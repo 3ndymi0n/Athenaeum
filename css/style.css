@@ -252,15 +252,15 @@ main {
     object-fit: cover;
 }
 
-#genre-label,
-#author-label {
+.genre-label,
+.author-label {
     font-size: 12px;
     font-weight: 600;
     letter-spacing: .1em;
     color: var(--yellow-200);
 }
 
-#title-label {
+.title-label {
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 1.2;
