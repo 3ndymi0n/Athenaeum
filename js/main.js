@@ -10,7 +10,7 @@ document.querySelector("#add-title").addEventListener("submit", (e) => {
       newTitle.genre,
       newTitle.readStatus,
       newTitle.coverArt,
-      newTitle.synopsis
+      newTitle.summary
     );
 
   } catch (err) {
@@ -60,18 +60,23 @@ const library = (function () {
     search : searchBooks,
 
     addBook: function (title, author, pages, genre, readStatus, coverArt, synopsis) {
+        let testLibrary = searchBooks('title', title)
+        if(testLibrary.length > 0){
+            this.removeBook(title);
+        }
+
         let id =  generateId();
         let details = new Book(
-          title,
-          author,
-          pages,
-          genre,
-          readStatus,
-          coverArt,
-          synopsis
+            title,
+            author,
+            pages,
+            genre,
+            readStatus,
+            coverArt,
+            synopsis
         );
-      bookCollection[id] = details;
-      updateLocalStorage();
+        bookCollection[id] = details;
+        updateLocalStorage();
     },
 
     removeBook: function(lookup) {
@@ -119,6 +124,7 @@ Book.prototype.info = function () {
 function contentCard(Book) {
     const contentCard = document.createElement('div')
     contentCard.classList.add('content-card');
+    contentCard.setAttribute("onclick", "openModal(this)");
     
     const template = `
         <img class="cover-art" src=${Book.coverArt}>
@@ -137,7 +143,7 @@ function contentCard(Book) {
         <!-- Card Modal -->
         <div class="modal-card">
             <div class="modal__content">
-                <span class="close">&times;</span>
+                <span class="close" onclick=closeModal(this) ">&times;</span>
                 <h1>${Book.title}</h1>
                 <hr />
                 <h4>Author:${Book.author}</h3>
@@ -161,6 +167,17 @@ function contentCard(Book) {
     return contentCard;
 }
 
+function openModal(element) {
+    let modal = element.querySelectorAll('.modal-card')[0];
+    modal.classList.add('modal-open');
+}
+
+function closeModal(element) {
+    let modal = element.parentElement.parentElement;
+    modal.classList.remove('modal-open');
+    console.log(modal);
+}
+
 let allBooks = library.getAllBooks();
 let page = document.getElementById('content-section');
 
@@ -169,3 +186,11 @@ for(book in allBooks) {
     page.appendChild(card);
 
 }
+
+
+// document.querySelectorAll('.content-card').forEach(item => {
+//     item.addEventListener('click', event => {
+//         let modal = item.querySelectorAll('.modal-card')[0];
+//         modal.classList.add('modal-open');
+//     })
+// });
