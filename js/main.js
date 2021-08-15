@@ -13,11 +13,11 @@ document.querySelector("#add-title").addEventListener("submit", (e) => {
       newTitle.coverArt,
       newTitle.synopsis
     );
+
   } catch (err) {
     alert(err.message);
   }
 });
-
 
 const library = (function () {
   let bookCollection = {};
@@ -33,7 +33,19 @@ const library = (function () {
     return Array.from(arr, dec2hex).join("");
   }
 
+  function searchBooks(para, search) {
+    let searchResults = [];
+    for([id, book] of Object.entries(bookCollection)) {
+        if(book[para] == search) {
+            searchResults.push(id);
+        };
+    }
+    return searchResults;
+  }
+
   return {
+    search : searchBooks,
+
     addBook: function (title, author, pages, genre, readStatus, coverArt, synopsis) {
         let id =  generateId();
         let details = new Book(
@@ -48,24 +60,22 @@ const library = (function () {
       bookCollection[id] = details;
     },
 
-    removeBook: function (title) {
-      console.log(`Removing ${title} from library...`);
-      bookCollection = bookCollection.filter((e) => {
-        return e.title != title;
-      });
+    removeBook: function(lookup) {
+        let items = searchBooks('title', lookup);
+        for (i in items){
+            console.log(`deleting bookCollection item ${items[i]}`)
+            delete bookCollection[items[i]];
+        }
     },
 
-    getBook: function (title) {
-      for (const item in bookCollection) {
-          console.log(`${item}: ${bookCollection[item]}`);
-      }
-      return `${title} not found.`;
+    getAllBooks: function() {
+        let books = [];
+        for([id, book] of Object.entries(bookCollection)) {
+            books.push(book);
+        }
+        return books;
     },
-
-    getAllBooks: function () {
-      return bookCollection;
-    },
-  };
+  }
 })();
 
 function Book(
@@ -90,7 +100,9 @@ Book.prototype.info = function () {
   return `${this.title}, ${this.author}, ${this.pages}, ${this.readStatus}`;
 };
 
-library.addBook(
+
+
+/* library.addBook(
   "The rise of Hyperion",
   "Dan Simmons",
   723,
@@ -105,4 +117,4 @@ library.addBook(
     "Dan Simmons",
     876,
     "Science Fiction"
-)
+) */
