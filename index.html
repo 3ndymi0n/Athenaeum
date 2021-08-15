@@ -58,7 +58,43 @@
                 </label>
             </section>
             <section class="content" id="content-section">
-                
+                <div class="content-card" onclick=openModal(this)>
+                    <img class="cover-art" src="https://www.booktopia.com.au/covers/big/9780007458424/0000/the-hobbit.jpg">
+                    <div class="content-details">
+                        <span class="genre-label">
+                            Fantasy
+                        </span>
+                        <p class="title-label">
+                            The Hobbit
+                        </p>
+                        <span class="author-label">
+                            J.R.R Tolkien
+                        </span>
+                    </div>
+            
+                    <!-- Card Modal -->
+                    <div class="modal-card">
+                        <div class="modal__content">
+                            <span class="close" onclick=closeModal(this) ">&times;</span>
+                            <h1>The Hobbit</h1>
+                            <hr />
+                            <h4>Author: J.R.R Tolkien</h3>
+                            <h4>Page Count: 368</h4>
+                            <h4>I have read this book</h4>
+                            <div class="synopsis">
+                                <h4>Synopsis:</h4>
+                                <p>The Hobbit is the unforgettable story of Bilbo, a peace-loving hobbit, who embarks on a strange and magical adventure. A timeless classic.
+
+                                    Bilbo Baggins enjoys a quiet and contented life, with no desire to travel far from the comforts of home; then one day the wizard Gandalf and a band of dwarves arrive unexpectedly and enlist his services -- as a burglar -- on a dangerous expedition to raid the treasure-hoard of Smaug the dragon. Bilbo's life is never to be the same again.</p>
+                                <br>
+                                <div class="modal__buttons">
+                                    <button class="btn btn-red">Delete Book</button>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
