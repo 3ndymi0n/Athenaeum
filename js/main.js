@@ -18,6 +18,25 @@ document.querySelector("#add-title").addEventListener("submit", (e) => {
   }
 });
 
+document.getElementById('content-section')
+  .addEventListener('click', event => {
+    //console.log(event.target);
+    if(event.target.className === 'cover-art'){
+      let target = event.target.parentElement.querySelector(".modal-card")
+      toggleModal(target);
+    }
+
+    if(event.target.className === 'close') {
+      let target = event.target.parentElement.parentElement;
+      toggleModal(target);
+    }
+
+    if(event.target.className === 'btn btn-red btn-del') {
+      const title = event.target.nextElementSibling.textContent;
+      library.removeBook(title);
+    }
+  })
+
 const library = (function () {
   let bookCollection = {};
   
@@ -117,14 +136,10 @@ function Book(
   this.synopsis = synopsis;
 }
 
-Book.prototype.info = function () {
-  return `${this.title}, ${this.author}, ${this.pages}, ${this.readStatus}`;
-};
-
 function contentCard(Book) {
     const contentCard = document.createElement('div')
     contentCard.classList.add('content-card');
-    contentCard.setAttribute("onclick", "openModal(this)");
+    // contentCard.setAttribute("onclick", "openModal(this)");
     
     const template = `
         <img class="cover-art" src=${Book.coverArt}>
@@ -143,7 +158,7 @@ function contentCard(Book) {
         <!-- Card Modal -->
         <div class="modal-card">
             <div class="modal__content">
-                <span class="close" onclick=closeModal(this) ">&times;</span>
+                <span class="close">&times;</span>
                 <h1>${Book.title}</h1>
                 <hr />
                 <h4>Author:${Book.author}</h3>
@@ -154,7 +169,8 @@ function contentCard(Book) {
                     <p>${Book.synopsis}</p>
                     <br>
                     <div class="modal__buttons">
-                        <button class="btn btn-red">Delete Book</button>
+                        <button class="btn btn-red btn-del">Delete Book</button>
+                        <p class="hidden">${Book.title}</p>
                     </div>
                         
                 </div>
@@ -167,30 +183,14 @@ function contentCard(Book) {
     return contentCard;
 }
 
-function openModal(element) {
-    let modal = element.querySelectorAll('.modal-card')[0];
-    modal.classList.add('modal-open');
+function toggleModal(e) {
+    e.classList.toggle('modal-open');
 }
 
-function closeModal(element) {
-    let modal = element.parentElement.parentElement;
-    modal.classList.remove('modal-open');
-    console.log(modal);
-}
-
-let allBooks = library.getAllBooks();
-let page = document.getElementById('content-section');
+const allBooks = library.getAllBooks();
+const page = document.getElementById('content-section');
 
 for(book in allBooks) {
     let card = contentCard(allBooks[book]);
     page.appendChild(card);
-
 }
-
-
-// document.querySelectorAll('.content-card').forEach(item => {
-//     item.addEventListener('click', event => {
-//         let modal = item.querySelectorAll('.modal-card')[0];
-//         modal.classList.add('modal-open');
-//     })
-// });

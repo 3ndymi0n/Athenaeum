@@ -15,7 +15,7 @@
                 <h1>athenaeum</h1>
             </div>
             <div class="add-card">
-                <form id="add-title" name="add-title" action="none" autocomplete="off" onsubmit="return false">
+                <form id="add-title" name="add-title" autocomplete="off">
                     <h3>Add a New Title</h3>
                     <h4>Fill in the form below to add a new title to the library</h4>
                     <fieldset>
@@ -58,7 +58,7 @@
                 </label>
             </section>
             <section class="content" id="content-section">
-                <div class="content-card" onclick=openModal(this)>
+                <div class="content-card">
                     <img class="cover-art" src="https://www.booktopia.com.au/covers/big/9780007458424/0000/the-hobbit.jpg">
                     <div class="content-details">
                         <span class="genre-label">
@@ -75,7 +75,7 @@
                     <!-- Card Modal -->
                     <div class="modal-card">
                         <div class="modal__content">
-                            <span class="close" onclick=closeModal(this) ">&times;</span>
+                            <span class="close">&times;</span>
                             <h1>The Hobbit</h1>
                             <hr />
                             <h4>Author: J.R.R Tolkien</h3>
@@ -88,7 +88,7 @@
                                     Bilbo Baggins enjoys a quiet and contented life, with no desire to travel far from the comforts of home; then one day the wizard Gandalf and a band of dwarves arrive unexpectedly and enlist his services -- as a burglar -- on a dangerous expedition to raid the treasure-hoard of Smaug the dragon. Bilbo's life is never to be the same again.</p>
                                 <br>
                                 <div class="modal__buttons">
-                                    <button class="btn btn-red">Delete Book</button>
+                                    <button class="btn btn-red btn-del">Delete Book</button>
                                 </div>
                                     
                             </div>
