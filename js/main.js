@@ -162,7 +162,7 @@ function contentCard(Book) {
                 <h1>${Book.title}</h1>
                 <hr />
                 <h4>Author:${Book.author}</h3>
-                <h4>Page Count:${Book.pages}</h4>
+                <h4>Page Count: ${Book.pages}</h4>
                 <h4>I have read this book</h4>
                 <div class="synopsis">
                     <h4>Synopsis:</h4>
@@ -176,7 +176,6 @@ function contentCard(Book) {
                 </div>
             </div>
         </div>
-    
     `;
 
     contentCard.innerHTML = template;
