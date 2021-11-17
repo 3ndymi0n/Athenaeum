@@ -200,20 +200,14 @@ function displayLibrary(filterText) {
     return e.title.includes(filterText);
   });
 
-  console.log(filteredBooks.length);
   if(filteredBooks.length == 0) {
-    while(page.children.length > 1){
-      page.removeChild(page.lastChild);
-    }
     for(book in allBooks) {
       let card = contentCard(allBooks[book]);
       page.appendChild(card);
     }
   }
   else {
-    while(page.children.length > 1){
-      page.removeChild(page.lastChild);
-    }
+    page.innerHTML = '';
     for(book in filteredBooks) {
       let card = contentCard(filteredBooks[book]);
       page.appendChild(card);
