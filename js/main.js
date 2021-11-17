@@ -215,12 +215,6 @@ function displayLibrary(filterText) {
       page.appendChild(card);
     }
   }
-  // if(filter.length == 0){
-  //   for(book in allBooks) {
-  //     let card = contentCard(allBooks[book]);
-  //     page.appendChild(card);
-  //   }
-  // } 
 }
 displayLibrary();
 
