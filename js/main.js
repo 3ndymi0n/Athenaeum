@@ -202,14 +202,18 @@ function displayLibrary(filterText) {
 
   console.log(filteredBooks.length);
   if(filteredBooks.length == 0) {
-    page.innerHTML= "";
+    while(page.children.length > 1){
+      page.removeChild(page.lastChild);
+    }
     for(book in allBooks) {
       let card = contentCard(allBooks[book]);
       page.appendChild(card);
     }
   }
   else {
-    page.innerHTML="";
+    while(page.children.length > 1){
+      page.removeChild(page.lastChild);
+    }
     for(book in filteredBooks) {
       let card = contentCard(filteredBooks[book]);
       page.appendChild(card);
