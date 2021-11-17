@@ -18,9 +18,16 @@ document.querySelector("#add-title").addEventListener("submit", (e) => {
   }
 });
 
+// Searchbar event listener
+const searchInput = document.querySelector('.search');
+searchInput.addEventListener('input', (e) => {
+  let value = e.target.value;
+  console.log(value);
+
+});
+
 document.getElementById('content-section')
   .addEventListener('click', event => {
-    //console.log(event.target);
     if(event.target.className === 'cover-art'){
       let target = event.target.parentElement.querySelector(".modal-card")
       toggleModal(target);
@@ -43,7 +50,7 @@ const library = (function () {
   checkLocalStorage();
 
   function checkLocalStorage() {
-      if(localStorage.getItem(bookCollection)){
+      if(localStorage.getItem('bookCollection')){
           bookCollection = JSON.parse(localStorage.getItem('bookCollection'));
       }else {
           bookCollection = {};
@@ -109,6 +116,7 @@ const library = (function () {
     },
 
     getAllBooks: function() {
+        checkLocalStorage();
         let books = [];
         for([id, book] of Object.entries(bookCollection)) {
             books.push(book);
@@ -161,9 +169,9 @@ function contentCard(Book) {
                 <span class="close">&times;</span>
                 <h1>${Book.title}</h1>
                 <hr />
-                <h4>Author:${Book.author}</h3>
+                <h4>Author: ${Book.author}</h3>
                 <h4>Page Count: ${Book.pages}</h4>
-                <h4>I have read this book</h4>
+                <h4>Read Status: ${Book.readStatus}</h4>
                 <div class="synopsis">
                     <h4>Synopsis:</h4>
                     <p>${Book.synopsis}</p>
