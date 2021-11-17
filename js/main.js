@@ -201,6 +201,7 @@ function displayLibrary(filterText) {
   });
 
   if(filteredBooks.length == 0) {
+    page.innerHTML = '';
     for(book in allBooks) {
       let card = contentCard(allBooks[book]);
       page.appendChild(card);
