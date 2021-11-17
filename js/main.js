@@ -22,8 +22,7 @@ document.querySelector("#add-title").addEventListener("submit", (e) => {
 const searchInput = document.querySelector('.search');
 searchInput.addEventListener('input', (e) => {
   let value = e.target.value;
-  console.log(value);
-
+  displayLibrary(value);
 });
 
 document.getElementById('content-section')
@@ -194,10 +193,35 @@ function toggleModal(e) {
     e.classList.toggle('modal-open');
 }
 
-const allBooks = library.getAllBooks();
-const page = document.getElementById('content-section');
+function displayLibrary(filterText) {
+  const allBooks = library.getAllBooks();
+  const page = document.getElementById('content-section');
+  const filteredBooks = allBooks.filter(e => {
+    return e.title.includes(filterText);
+  });
 
-for(book in allBooks) {
-    let card = contentCard(allBooks[book]);
-    page.appendChild(card);
+  console.log(filteredBooks.length);
+  if(filteredBooks.length == 0) {
+    page.innerHTML= "";
+    for(book in allBooks) {
+      let card = contentCard(allBooks[book]);
+      page.appendChild(card);
+    }
+  }
+  else {
+    page.innerHTML="";
+    for(book in filteredBooks) {
+      let card = contentCard(filteredBooks[book]);
+      page.appendChild(card);
+    }
+  }
+  // if(filter.length == 0){
+  //   for(book in allBooks) {
+  //     let card = contentCard(allBooks[book]);
+  //     page.appendChild(card);
+  //   }
+  // } 
 }
+displayLibrary();
+
+
